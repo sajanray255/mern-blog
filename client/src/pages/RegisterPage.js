@@ -4,6 +4,7 @@ export default function RegisterPage(){
 
     const [username,setUsername]=useState('');
     const [password,setPassword]=useState('');
+    
    async function register(ev){
         ev.preventDefault();
 

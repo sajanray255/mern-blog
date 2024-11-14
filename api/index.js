@@ -5,10 +5,10 @@ const User=require('./models/User');
 const Post=require('./models/Post');
 const bcrypt=require('bcryptjs');
 const app= express();
-const jwt=require('jsonwebtoken');
-const cookieParser=require('cookie-parser');
+const jwt=require('jsonwebtoken'); 
+const cookieParser=require('cookie-parser'); //middleware to extract data from cookies
 const multer =require('multer');
-const uploadMiddleware=multer({dest:'uploads/'});
+const uploadMiddleware=multer({dest:'uploads/'}); //middleware to upload files
 const fs=require('fs');
 
 
@@ -127,8 +127,8 @@ app.put('/post',uploadMiddleware.single('file') ,async  (req,res)=>{
         const {id,title,summary,content}=req.body; 
         const postDoc= await Post.findById(id)
          
-        const isAuthor=JSON.stringify(postDoc.author) === JSON.stringify(info.id);
-        // res.json({isAuthor});
+        const isAuthor=JSON.stringify(postDoc.author) === JSON.stringify(info.id); 
+    
      if(!isAuthor){
        return res.status(400).json('you are not the author');
      }
@@ -139,7 +139,7 @@ app.put('/post',uploadMiddleware.single('file') ,async  (req,res)=>{
         if (newPath) {
             postDoc.cover = newPath;
         }
-        await postDoc.save();
+        await postDoc.save();  // saving edited details in database
         res.json(postDoc);
 
     });
@@ -160,7 +160,7 @@ app.delete('/post/:id', async (req, res) => {
             return res.status(404).json('Post not found');
         }
 
-        await Post.findByIdAndDelete(id);
+        await Post.findByIdAndDelete(id); //deleting the post from database
         res.json('Post deleted');
     });
 });

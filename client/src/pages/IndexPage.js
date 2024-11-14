@@ -19,7 +19,7 @@ export default function IndexPage() {
         <>
             {posts.length > 0 ? (
                 posts.map(post => (
-                    <Post key={post.id} {...post} />
+                    <Post key={post.id} {...post} /> // sending props to post component
                 ))
             ) : (
                 <p>No posts available</p>

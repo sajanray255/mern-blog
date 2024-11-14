@@ -11,7 +11,7 @@
 
         <div className="image">
         <Link to={`/post/${_id}`}>
-        <img src={'http://localhost:4000/'+cover} alt="post img" />
+        <img src={'http://localhost:4000/'+cover} alt="post img" />   
         </Link>
         </div>
 

@@ -8,10 +8,10 @@ import Editor from "../Editor";
     const [summary,setSummary]=useState('');
     const [content,setContent]=useState('');
     const [files,setFiles]=useState('');
-    const [redirect,setRedirect]=useState('');
+    const [redirect,setRedirect]=useState('');    
 
    useEffect(()=>{
-    fetch('http://localhost:4000/post/'+id)
+    fetch('http://localhost:4000/post/'+id)     // loading previous data of post before editing post
     .then(response=>{
           response.json().then(postInfo=>{
             setTitle(postInfo.title);
@@ -35,7 +35,7 @@ import Editor from "../Editor";
         }
         
 
-      const response= await fetch('http://localhost:4000/post',{
+      const response= await fetch('http://localhost:4000/post',{        //put i.e. update request to server for given post
             method:'PUT',
             body:data,
             credentials:'include',
@@ -64,7 +64,7 @@ import Editor from "../Editor";
              <input type="file" 
              onChange={ev=>setFiles(ev.target.files)} />
      
-             <Editor onchage={setContent} value={content} />
+             <Editor onChange={(value) => setContent(value)} value={content} />
      
              <button style={{marginTop:'5px'}}>Update Post</button>
          </form>

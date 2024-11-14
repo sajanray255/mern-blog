@@ -1,0 +1,8 @@
+for frontend goto client cd client 
+then yarn start
+
+for backend goto api cd api
+then nodemon index.js or node index.js
+
+for database mongo db 
+open atlas and connect the cluster
