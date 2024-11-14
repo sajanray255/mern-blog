@@ -50,7 +50,7 @@ if(!postInfo) return '';
             
             <div className="author">by {postInfo.author.username}</div>
 
-            {userInfo.id===postInfo.author._id &&(
+            {userInfo && userInfo.id===postInfo.author._id &&(
                 <div className="edit-row">
                     <Link  to={`/edit/${postInfo._id}`} className="edit-btn">
                         
